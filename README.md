@@ -2,15 +2,13 @@
 
 # 🌑 Winter Arc 2026
 
-### *"I refuse to be bitter; don't be bitter towards life."*
+### *"I refuse to be bitter"*
 
 ![Python](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)
 ![Built in Public](https://img.shields.io/badge/built-in%20public-orange)
 ![Sept 1 → Dec 31](https://img.shields.io/badge/Sept%201%20→%20Dec%2031%2C%202026-122%20days-8A2BE2)
 
 </div>
-
-Repo: [github.com/Sohamnaik/Winter-Arc-2026](https://github.com/Sohamnaik/Winter-Arc-2026)
 
 ---
 
@@ -25,10 +23,6 @@ Five daily habits. Do it, +1. Miss it, −1. Not a "today" habit? Skip it — no
 | 3 | **Programming** | Deliberate practice + open-source contributions, not just tutorials |
 | 4 | **Fitness & clean diet** | Train regularly, no junk, no added sugar |
 | 5 | **Relationships** | Actively build and maintain the connections that matter |
-
-Math isn't a forced daily checkbox — it's real study, tracked as a topic checklist in `syllabus/mathematics.md` instead. Same for the exam syllabus itself and the programming roadmap — see **Syllabus Progress** below.
-
-This isn't a vibe, it's a system — the habit stack James Clear talks about in *Atomic Habits*: small daily reps, tracked honestly, compounding for 122 days.
 
 ---
 
@@ -59,38 +53,6 @@ _Last updated: 2026-09-01_
 | Mathematics | ![Mathematics](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/syllabus_mathematics.json) |
 | Programming | ![Programming](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/syllabus_programming.json) |
 
-_Check off topics directly in the `syllabus/*.md` files (`- [ ]` -> `- [x]`) as you cover them._
-<!-- SYLLABUS:END -->
-
-Checklists live in `syllabus/`:
-- `syllabus/exam_prep.md` — CSIR-NET Life Sciences, GATE BT/XL, DBT-BET
-- `syllabus/programming.md` — roadmap + open-source contribution log
-- `syllabus/mathematics.md` — the math rebuild, topic by topic
-
----
-
-## ⚙️ How This Works
-
-1. **Log the day.** Run:
-   ```bash
-   python scripts/log_day.py
-   ```
-   It asks y/n/skip for each of the 5 habits and saves it to `data/tracker.json` under today's date. Skip a habit that isn't relevant today (e.g. Relationships) and it simply doesn't count for or against you.
-
-2. **Check off syllabus topics as you actually cover them** in the `syllabus/*.md` files (`- [ ]` → `- [x]`).
-
-3. **Update the README.** Run:
-   ```bash
-   python scripts/update_readme.py
-   ```
-   This recalculates your habit score, streak, perfect days, per-habit consistency, and syllabus completion, regenerates the colored badges in `data/badges/`, and rewrites the marked blocks above.
-
-4. **Automate it.** `.github/workflows/update-readme.yml` runs step 3 automatically and commits the refreshed README + badges whenever you push a change to `data/tracker.json` or any `syllabus/*.md` file.
-
-5. **Commit daily.** The commit history *is* the "built in public" part — every green square is a day you showed up.
-
-> Badges pull live from `data/badges/*.json` on GitHub's `main` branch via shields.io, so they update automatically after every push — no need to touch them by hand. They may lag a minute behind a fresh push while GitHub's CDN catches up.
-
 ---
 
 ## 🎯 Scoring Rules
@@ -105,6 +67,6 @@ Checklists live in `syllabus/`:
 
 <div align="center">
 
-### 122 days. No bitterness. Just the reps.
+### Why am I doing this? I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine.
 
 </div>
