@@ -1,10 +1,8 @@
-# 🌑 Winter Arc 2026
+# Winter Arc 2026 🔥
 
 > "I refuse to be bitter; don't be bitter towards life."
 
-**Sept 1, 2026 → Dec 31, 2026** · 122 days · built and tracked in public.
-
-Repo: [github.com/Sohamnaik/winter-arc-2026](https://github.com/Sohamnaik)
+**September 1, 2026 → December 31, 2026** · 122 days · built and tracked in public.
 
 ---
 
@@ -18,15 +16,11 @@ Five daily habits. Do it, +1. Miss it, −1. Not a "today" habit? Skip it — no
 | 2 | **Exam prep** | UGC-CSIR-NET-JRF (Dec 2026), GATE 2027 Biotech & Life Sciences (Feb 2027), DBT-BET (2026-27) — math study folds in here too |
 | 3 | **Programming** | Deliberate practice + open-source contributions, not just tutorials |
 | 4 | **Fitness & clean diet** | Train regularly, no junk, no added sugar |
-| 5 | **Relationships** | Actively build and maintain the connections that matter |
-
-Math isn't a forced daily checkbox — it's real study, so it's tracked properly as a topic checklist in `syllabus/mathematics.md` instead. Same for the exam syllabus itself and the programming roadmap — see **Syllabus Progress** below.
-
-This isn't a vibe, it's a system — the habit stack James Clear talks about in *Atomic Habits*: small daily reps, tracked honestly, compounding for 122 days.
+| 5 | **Relationships** | Maintain the connections that matter |
 
 ---
 
-## Live Stats
+## Player status 
 
 <!-- STATS:START -->
 **Score: -1**  |  Days logged: 1/122  |  Perfect days: 0  |  Current streak: 0 🔥
@@ -41,7 +35,6 @@ Arc progress: `░░░░░░░░░░░░░░░░░░░░` 1% 
 | Fitness & Clean Diet | 0 | 0 | `░░░░░░░░░░░░` 0% |
 | Relationships & Connection | 0 | 0 | `░░░░░░░░░░░░` 0% |
 
-_Last updated: 2026-09-01_
 <!-- STATS:END -->
 
 ---
@@ -55,7 +48,6 @@ _Last updated: 2026-09-01_
 | Mathematics | 0 | 22 | `░░░░░░░░░░░░` 0% |
 | Programming | 0 | 15 | `░░░░░░░░░░░░` 0% |
 
-_Check off topics directly in the `syllabus/*.md` files (`- [ ]` -> `- [x]`) as you cover them._
 <!-- SYLLABUS:END -->
 
 Checklists live in `syllabus/`:
@@ -99,6 +91,4 @@ Checklists live in `syllabus/`:
 
 ## Why
 
-122 days. Two exam tracks, a body of work in code, a rebuilt relationship with math, a body that isn't running on junk, and people who still know I exist at the other end of it.
-
-No bitterness. Just the reps.
+I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine.
