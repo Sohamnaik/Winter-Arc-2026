@@ -1,12 +1,20 @@
-# Winter Arc 2026 🔥
+<div align="center">
 
-> "I refuse to be bitter; don't be bitter towards life."
+# 🌑 Winter Arc 2026
 
-**September 1, 2026 → December 31, 2026** · 122 days · built and tracked in public.
+### *"I refuse to be bitter; don't be bitter towards life."*
+
+![Python](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)
+![Built in Public](https://img.shields.io/badge/built-in%20public-orange)
+![Sept 1 → Dec 31](https://img.shields.io/badge/Sept%201%20→%20Dec%2031%2C%202026-122%20days-8A2BE2)
+
+</div>
+
+Repo: [github.com/Sohamnaik/Winter-Arc-2026](https://github.com/Sohamnaik/Winter-Arc-2026)
 
 ---
 
-## The Arc
+## 📋 The Arc
 
 Five daily habits. Do it, +1. Miss it, −1. Not a "today" habit? Skip it — no score change.
 
@@ -16,38 +24,42 @@ Five daily habits. Do it, +1. Miss it, −1. Not a "today" habit? Skip it — no
 | 2 | **Exam prep** | UGC-CSIR-NET-JRF (Dec 2026), GATE 2027 Biotech & Life Sciences (Feb 2027), DBT-BET (2026-27) — math study folds in here too |
 | 3 | **Programming** | Deliberate practice + open-source contributions, not just tutorials |
 | 4 | **Fitness & clean diet** | Train regularly, no junk, no added sugar |
-| 5 | **Relationships** | Maintain the connections that matter |
+| 5 | **Relationships** | Actively build and maintain the connections that matter |
+
+Math isn't a forced daily checkbox — it's real study, tracked as a topic checklist in `syllabus/mathematics.md` instead. Same for the exam syllabus itself and the programming roadmap — see **Syllabus Progress** below.
+
+This isn't a vibe, it's a system — the habit stack James Clear talks about in *Atomic Habits*: small daily reps, tracked honestly, compounding for 122 days.
 
 ---
 
-## Player status 
+## 📊 Player Status
 
 <!-- STATS:START -->
-**Score: -1**  |  Days logged: 1/122  |  Perfect days: 0  |  Current streak: 0 🔥
+![Score](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/score.json) ![Streak](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/streak.json) ![Perfect Days](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/perfect_days.json) ![Days Logged](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/days_logged.json) ![Arc Progress](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/arc_progress.json)
 
-Arc progress: `░░░░░░░░░░░░░░░░░░░░` 1% (1/122 days elapsed)
+| Habit | Consistency |
+|---|---|
+| Wake before 8 AM | ![Wake before 8 AM](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/habit_wake_before_8.json) |
+| Exam Prep (NET-JRF / GATE / math) | ![Exam Prep (NET-JRF / GATE / math)](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/habit_exam_prep.json) |
+| Programming / Open Source | ![Programming / Open Source](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/habit_programming.json) |
+| Fitness & Clean Diet | ![Fitness & Clean Diet](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/habit_fitness_diet.json) |
+| Relationships & Connection | ![Relationships & Connection](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/habit_relationships.json) |
 
-| Habit | Done | Missed | Consistency |
-|---|---|---|---|
-| Wake before 8 AM | 0 | 1 | `░░░░░░░░░░░░` 0% |
-| Exam Prep (NET-JRF / GATE / math) | 0 | 0 | `░░░░░░░░░░░░` 0% |
-| Programming / Open Source | 0 | 0 | `░░░░░░░░░░░░` 0% |
-| Fitness & Clean Diet | 0 | 0 | `░░░░░░░░░░░░` 0% |
-| Relationships & Connection | 0 | 0 | `░░░░░░░░░░░░` 0% |
-
+_Last updated: 2026-09-01_
 <!-- STATS:END -->
 
 ---
 
-## Syllabus Progress
+## 🧬 Syllabus Progress
 
 <!-- SYLLABUS:START -->
-| Track | Topics done | Total | Progress |
-|---|---|---|---|
-| Exam Prep | 0 | 36 | `░░░░░░░░░░░░` 0% |
-| Mathematics | 0 | 22 | `░░░░░░░░░░░░` 0% |
-| Programming | 0 | 15 | `░░░░░░░░░░░░` 0% |
+| Track | Progress |
+|---|---|
+| Exam Prep | ![Exam Prep](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/syllabus_exam_prep.json) |
+| Mathematics | ![Mathematics](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/syllabus_mathematics.json) |
+| Programming | ![Programming](https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges/syllabus_programming.json) |
 
+_Check off topics directly in the `syllabus/*.md` files (`- [ ]` -> `- [x]`) as you cover them._
 <!-- SYLLABUS:END -->
 
 Checklists live in `syllabus/`:
@@ -57,7 +69,7 @@ Checklists live in `syllabus/`:
 
 ---
 
-## How this works
+## ⚙️ How This Works
 
 1. **Log the day.** Run:
    ```bash
@@ -71,15 +83,17 @@ Checklists live in `syllabus/`:
    ```bash
    python scripts/update_readme.py
    ```
-   This recalculates your habit score, streak, perfect days, per-habit consistency, and syllabus completion, then rewrites the marked blocks above.
+   This recalculates your habit score, streak, perfect days, per-habit consistency, and syllabus completion, regenerates the colored badges in `data/badges/`, and rewrites the marked blocks above.
 
-4. **Automate it.** `.github/workflows/update-readme.yml` runs step 3 automatically and commits the refreshed README whenever you push a change to `data/tracker.json` or any `syllabus/*.md` file.
+4. **Automate it.** `.github/workflows/update-readme.yml` runs step 3 automatically and commits the refreshed README + badges whenever you push a change to `data/tracker.json` or any `syllabus/*.md` file.
 
 5. **Commit daily.** The commit history *is* the "built in public" part — every green square is a day you showed up.
 
+> Badges pull live from `data/badges/*.json` on GitHub's `main` branch via shields.io, so they update automatically after every push — no need to touch them by hand. They may lag a minute behind a fresh push while GitHub's CDN catches up.
+
 ---
 
-## Scoring rules
+## 🎯 Scoring Rules
 
 - Each of the 5 daily habits is worth **+1** if done, **−1** if missed, **0** (not counted) if skipped as not applicable that day.
 - **Perfect day** = every habit you logged that day (i.e. didn't skip) was a +1.
@@ -89,6 +103,8 @@ Checklists live in `syllabus/`:
 
 ---
 
-## Why
+<div align="center">
 
-I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine.
+### 122 days. No bitterness. Just the reps.
+
+</div>
