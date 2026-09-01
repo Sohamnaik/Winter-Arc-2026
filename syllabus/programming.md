@@ -1,9 +1,4 @@
-# Programming — 0 to Hero (Python)
-
-Language: **Python**, starting on Codecademy, then moving straight into
-real computational-biology work using Soham's CompBio Mastery roadmap.
-Check things off as they move from "seen" to "actually used in something."
-
+# Programming (Python)
 ---
 
 ## Phase 0 — Setup
@@ -90,7 +85,7 @@ Check things off as they move from "seen" to "actually used in something."
 - [ ] Publish at least 2 Hugging Face model cards (e.g. the ESM2 LoRA adapter, the GNN) with description, training data, eval results, limitations
 - [ ] Write one blog post per phase (6 total), aimed at a technically literate biologist who doesn't code
 
-## Open Source Contributions (ongoing, separate track)
+## Open Source Contributions
 - [ ] Find 5 candidate repos — good first issues, active maintainers
 - [ ] Read CONTRIBUTING.md and set up the dev environment for each
 - [ ] First issue triaged / commented on
@@ -99,8 +94,3 @@ Check things off as they move from "seen" to "actually used in something."
 - [ ] Second contribution (bigger than the first)
 - [ ] Ongoing — one meaningful contribution per month for the rest of the arc
 
-## Log of contributions
-
-| Date | Repo | What | Link |
-|---|---|---|---|
-| | | | |
