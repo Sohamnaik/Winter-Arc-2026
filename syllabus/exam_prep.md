@@ -1,14 +1,10 @@
-# Exam Prep Syllabus — CSIR-UGC-NET-JRF · GATE BT/XL · DBT-BET
+# Exam Prep Syllabus — UGC-CSIR-DBT-NET-JRF · GATE 2027 BT/XL 
 
 Check items off as you genuinely cover them (not just skim once).
 `- [ ]` -> `- [x]`. Progress here feeds the "Syllabus Progress" table
 in the main README automatically.
 
-> Cross-check this against the latest official notification PDFs for
-> the Dec 2026 NET-JRF cycle and GATE 2027 — syllabi get revised
-> between cycles, this is a standard-cycle baseline to start from.
-
-## CSIR-UGC-NET Life Sciences
+## UGC-CSIR-DBT-NET Life Sciences
 
 - [ ] Unit 1 — Molecules and their interactions relevant to biology
 - [ ] Unit 2 — Cellular organization
@@ -45,16 +41,4 @@ in the main README automatically.
 - [ ] Zoology
 - [ ] Microbiology
 
-## DBT-BET (2026-27)
-
-- [ ] Core biotechnology fundamentals overlap (link to units above as covered)
-- [ ] Previous years' DBT-BET question analysis
-- [ ] Mock test round 1
-- [ ] Mock test round 2
-
 ## Ongoing
-
-- [ ] Revision pass 1 (all units, quick)
-- [ ] Revision pass 2 (weak units only)
-- [ ] Full-length mock — NET pattern
-- [ ] Full-length mock — GATE pattern
