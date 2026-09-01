@@ -1,6 +1,7 @@
 """
 Recalculates Winter Arc stats from data/tracker.json, scans syllabus/*.md
-for checkbox progress, and rewrites the two marked blocks in README.md:
+for checkbox progress, writes shields.io badge JSON files to
+data/badges/*.json, and rewrites the two marked blocks in README.md:
 
   <!-- STATS:START -->    ... <!-- STATS:END -->
   <!-- SYLLABUS:START --> ... <!-- SYLLABUS:END -->
@@ -18,9 +19,13 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "tracker.json"
 README_PATH = ROOT / "README.md"
 SYLLABUS_DIR = ROOT / "syllabus"
+BADGE_DIR = ROOT / "data" / "badges"
 
 STATS_START, STATS_END = "<!-- STATS:START -->", "<!-- STATS:END -->"
 SYL_START, SYL_END = "<!-- SYLLABUS:START -->", "<!-- SYLLABUS:END -->"
+
+# Update this if the repo is ever renamed or moved to a different branch.
+RAW_BASE = "https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges"
 
 CATEGORY_LABELS = {
     "wake_before_8": "Wake before 8 AM",
@@ -31,6 +36,30 @@ CATEGORY_LABELS = {
 }
 
 CHECKBOX_RE = re.compile(r"^\s*-\s\[( |x|X)\]", re.MULTILINE)
+
+
+# ---------- badge helpers ----------
+
+def pct_color(pct):
+    if pct is None:
+        return "lightgrey"
+    if pct >= 75:
+        return "brightgreen"
+    if pct >= 50:
+        return "yellow"
+    if pct >= 25:
+        return "orange"
+    return "red"
+
+
+def write_badge(filename, label, message, color):
+    BADGE_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {"schemaVersion": 1, "label": label, "message": str(message), "color": color}
+    (BADGE_DIR / filename).write_text(json.dumps(payload))
+
+
+def badge_md(filename, alt):
+    return f"![{alt}]({RAW_BASE}/{filename})"
 
 
 # ---------- habit stats ----------
@@ -96,35 +125,54 @@ def compute_stats(data):
     }
 
 
-def render_bar(done, missed, width=20):
-    total = done + missed
-    if total == 0:
-        return "`" + ("░" * width) + "` 0%"
-    pct = done / total
-    filled = round(pct * width)
-    bar = "█" * filled + "░" * (width - filled)
-    return f"`{bar}` {pct * 100:.0f}%"
+def write_habit_badges(data, stats):
+    score = stats["total_score"]
+    write_badge(
+        "score.json", "score",
+        f"{score:+d}",
+        "brightgreen" if score > 0 else ("lightgrey" if score == 0 else "red"),
+    )
+    write_badge(
+        "streak.json", "streak",
+        f"{stats['current_streak']} days",
+        "brightgreen" if stats["current_streak"] > 0 else "lightgrey",
+    )
+    write_badge("perfect_days.json", "perfect days", stats["perfect_days"], "blueviolet")
+    write_badge(
+        "days_logged.json", "days logged",
+        f"{stats['days_logged']}/{stats['total_arc_days']}",
+        "informational",
+    )
+    arc_pct = round(100 * stats["days_elapsed"] / stats["total_arc_days"]) if stats["total_arc_days"] else 0
+    write_badge(
+        "arc_progress.json", "arc progress",
+        f"{arc_pct}% ({stats['days_elapsed']}/{stats['total_arc_days']})",
+        "blue",
+    )
+    for c in data["categories"]:
+        done = stats["per_cat_done"][c]
+        missed = stats["per_cat_missed"][c]
+        total = done + missed
+        pct = round(100 * done / total) if total else None
+        label = CATEGORY_LABELS.get(c, c)
+        msg = f"{pct}% ({done}/{total})" if total else "not logged yet"
+        write_badge(f"habit_{c}.json", label, msg, pct_color(pct) if total else "lightgrey")
 
 
 def render_stats_block(data, stats):
     lines = [
-        f"**Score: {stats['total_score']:+d}**  |  "
-        f"Days logged: {stats['days_logged']}/{stats['total_arc_days']}  |  "
-        f"Perfect days: {stats['perfect_days']}  |  "
-        f"Current streak: {stats['current_streak']} 🔥",
+        f"{badge_md('score.json', 'Score')} "
+        f"{badge_md('streak.json', 'Streak')} "
+        f"{badge_md('perfect_days.json', 'Perfect Days')} "
+        f"{badge_md('days_logged.json', 'Days Logged')} "
+        f"{badge_md('arc_progress.json', 'Arc Progress')}",
         "",
-        f"Arc progress: "
-        f"{render_bar(stats['days_elapsed'], stats['total_arc_days'] - stats['days_elapsed'])} "
-        f"({stats['days_elapsed']}/{stats['total_arc_days']} days elapsed)",
-        "",
-        "| Habit | Done | Missed | Consistency |",
-        "|---|---|---|---|",
+        "| Habit | Consistency |",
+        "|---|---|",
     ]
     for c in data["categories"]:
         label = CATEGORY_LABELS.get(c, c)
-        done = stats["per_cat_done"][c]
-        missed = stats["per_cat_missed"][c]
-        lines.append(f"| {label} | {done} | {missed} | {render_bar(done, missed, 12)} |")
+        lines.append(f"| {label} | {badge_md(f'habit_{c}.json', label)} |")
     lines.append("")
     lines.append(f"_Last updated: {datetime.date.today().isoformat()}_")
     return "\n".join(lines)
@@ -141,19 +189,24 @@ def compute_syllabus_progress():
         boxes = CHECKBOX_RE.findall(text)
         total = len(boxes)
         done = sum(1 for b in boxes if b.lower() == "x")
-        results.append({"name": path.stem.replace("_", " ").title(), "done": done, "total": total})
+        results.append({"key": path.stem, "name": path.stem.replace("_", " ").title(), "done": done, "total": total})
     return results
+
+
+def write_syllabus_badges(progress):
+    for p in progress:
+        pct = round(100 * p["done"] / p["total"]) if p["total"] else None
+        msg = f"{pct}% ({p['done']}/{p['total']})" if p["total"] else "no checklist"
+        write_badge(f"syllabus_{p['key']}.json", p["name"], msg, pct_color(pct) if p["total"] else "lightgrey")
 
 
 def render_syllabus_block(progress):
     if not progress:
         return "_No syllabus files found in `syllabus/`._"
-    lines = ["| Track | Topics done | Total | Progress |", "|---|---|---|---|"]
+    lines = ["| Track | Progress |", "|---|---|"]
     for p in progress:
-        remaining = p["total"] - p["done"]
-        lines.append(
-            f"| {p['name']} | {p['done']} | {p['total']} | {render_bar(p['done'], remaining, 12)} |"
-        )
+        badge_filename = f"syllabus_{p['key']}.json"
+        lines.append(f"| {p['name']} | {badge_md(badge_filename, p['name'])} |")
     lines.append("")
     lines.append(
         "_Check off topics directly in the `syllabus/*.md` files "
@@ -175,9 +228,11 @@ def replace_block(text, start_mark, end_mark, new_content):
 def main():
     data = load_data()
     stats = compute_stats(data)
+    write_habit_badges(data, stats)
     stats_block = render_stats_block(data, stats)
 
     progress = compute_syllabus_progress()
+    write_syllabus_badges(progress)
     syllabus_block = render_syllabus_block(progress)
 
     text = README_PATH.read_text()
@@ -185,7 +240,7 @@ def main():
     text = replace_block(text, SYL_START, SYL_END, syllabus_block)
     README_PATH.write_text(text)
 
-    print("README updated.\n")
+    print("README and badges updated.\n")
     print(stats_block)
     print()
     print(syllabus_block)
