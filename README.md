@@ -1,8 +1,8 @@
 <div align="center">
 
-# Winter Arc 2026
+# Winter Arc 2026 
 
-### *"I refuse to be bitter."*
+### *"Why am I doing this? I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine."*
 
 ![Built in Public](https://img.shields.io/badge/built-in%20public-orange)
 ![Sept 1 → Dec 31](https://img.shields.io/badge/Sept%201%20→%20Dec%2031%2C%202026-122%20days-8A2BE2)
@@ -50,6 +50,6 @@ Arc progress: `░░░░░░░░░░░░░░░░░░` **1%** (1
 
 <div align="center">
 
-### Why am I doing this? I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine.
+### 
 
 </div>
