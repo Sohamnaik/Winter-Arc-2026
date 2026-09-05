@@ -48,7 +48,7 @@ Arc progress: `░░░░░░░░░░░░░░░░░░` **1%** (1
 
 ---
 
-<div align="center">
+
 
 ### 
 
