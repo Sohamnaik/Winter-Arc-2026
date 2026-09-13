@@ -62,19 +62,19 @@
 
 ### Progress
 
-**The Hybrid Athlete**
+**The Hybrid Athlete**<br>
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
-**The Unglamorous Climb**
+**The Unglamorous Climb**<br>
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
-**AIR 1**
+**AIR 1**<br>
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
-**Programming Nerd**
+**Programming Nerd**<br>
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
-**Atmanirbhar Soham**
+**Atmanirbhar Soham**<br>
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
 </td>

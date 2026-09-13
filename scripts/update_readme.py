@@ -321,7 +321,7 @@ def render_progress_block(stats):
         pct = round(100 * done / total) if total else 0
         filled = round(BAR_LENGTH * pct / 100)
         bar = "▓" * filled + "░" * (BAR_LENGTH - filled)
-        entries.append(f"**{p['name']}**\n`{bar}` {pct}%")
+        entries.append(f"**{p['name']}**<br>\n`{bar}` {pct}%")
     return "\n\n".join(entries)
 
 
