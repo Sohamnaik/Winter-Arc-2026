@@ -1,55 +1,56 @@
-<div align="center">
+<table>
+<tr>
+<td width="260">
+  <img src="assets/quote.jpg" width="240"/>
+</td>
+<td valign="middle">
 
-# Winter Arc 2026 
+# Winter Arc 2026
 
-### *"Why am I doing this? I read this quote on Instagram that said, "Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through". This repo represents that journey of mine."*
+### *"Why am I doing this? I read this quote on Instagram that said, 'Somewhere in your 20s, you'll get the opportunity to rebuild your life after a negative loop, heal from what broke you, live in your own space, reconnect with your discipline, and learn to love yourself again. It is very important that you see that journey through.' This repo represents that journey of mine."*
 
-![Built in Public](https://img.shields.io/badge/built-in%20public-orange)
-![Sept 1 → Dec 31](https://img.shields.io/badge/Sept%201%20→%20Dec%2031%2C%202026-122%20days-8A2BE2)
+`built` `in public` · **Sept 1 → Dec 31, 2026** · **122 days**
 
-</div>
+</td>
+</tr>
+</table>
 
 ## The Arc
+
 | # | Habit | What it means |
 |---|---|---|
 | 1 | **Wake before 8 AM** | No exceptions, no snoozing past it |
-| 2 | **Exam battles** | CSIR-UGC-DBT-NET-JRF Life Sciences (Dec 2026) + GATE 2027 Biotechnology & Life Sciences (Feb 2027)|
-| 3 | **Programming** | Deliberate practice + open-source contributions|
+| 2 | **Exam battles** | CSIR-UGC-DBT-NET-JRF Life Sciences (Dec 2026) + GATE 2027 Biotechnology & Life Sciences (Feb 2027) |
+| 3 | **Programming** | Deliberate practice + open-source contributions |
 | 4 | **Fitness & clean diet** | Train regularly, no junk, no added sugar |
 | 5 | **Relationships** | Actively build and maintain the connections that matter |
 
----
-
 ## Player Status
 
-<!-- STATS:START -->
-**Score `-1`**&nbsp;&nbsp;·&nbsp;&nbsp;**Streak `0` 🔥**&nbsp;&nbsp;·&nbsp;&nbsp;**Perfect days `0`**&nbsp;&nbsp;·&nbsp;&nbsp;**Days logged `1/122`**
+**Score** `-1` · **Streak** `0` 🔥 · **Perfect days** `0` · **Days logged** `1/122`
 
-Arc progress: `░░░░░░░░░░░░░░░░░░` **1%** (1/122 days elapsed)
+## Daily Tracker
 
-| Habit | Consistency |
-|---|---|
-| Wake before 8 AM | `░░░░░░░░░░░░░░` **0%** |
-| Exam Prep (NET-JRF / GATE / math) | `░░░░░░░░░░░░░░` — |
-| Programming / Open Source | `░░░░░░░░░░░░░░` — |
-| Fitness & Clean Diet | `░░░░░░░░░░░░░░` — |
-| Relationships & Connection | `░░░░░░░░░░░░░░` — |
+🟩 Perfect day &nbsp;&nbsp; 🟥 Missed day &nbsp;&nbsp; ⬛ Not yet logged
 
----
+|     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| 🟥 | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
+| ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 
-## 🧬 Syllabus Progress
+## Progress
 
-<!-- SYLLABUS:START -->
-| Track | Topics | Progress |
-|---|---|---|
-| Exam Prep | 0/184 | `░░░░░░░░░░░░░░` **0%** |
-| Mathematics | 0/61 | `░░░░░░░░░░░░░░` **0%** |
-| Programming | 0/75 | `░░░░░░░░░░░░░░` **0%** |
+![The Hybrid Athlete](https://progress-bar.dev/0/?title=The+Hybrid+Athlete&width=400)
 
----
+![The Unglamorous Climb](https://progress-bar.dev/0/?title=The+Unglamorous+Climb&width=400)
 
+![AIR 1](https://progress-bar.dev/0/?title=AIR+1&width=400)
 
+![Programming Nerd](https://progress-bar.dev/0/?title=Programming+Nerd&width=400)
 
-### 
-
-</div>
+![Atmanirbhar Soham](https://progress-bar.dev/0/?title=Atmanirbhar+Soham&width=400)
