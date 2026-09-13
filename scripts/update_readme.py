@@ -23,6 +23,9 @@ BADGE_DIR = ROOT / "data" / "badges"
 
 STATS_START, STATS_END = "<!-- STATS:START -->", "<!-- STATS:END -->"
 SYL_START, SYL_END = "<!-- SYLLABUS:START -->", "<!-- SYLLABUS:END -->"
+TRACKER_START, TRACKER_END = "<!-- TRACKER:START -->", "<!-- TRACKER:END -->"
+
+WEEKDAY_HEADERS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 # Update this if the repo is ever renamed or moved to a different branch.
 RAW_BASE = "https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges"
@@ -215,11 +218,65 @@ def render_syllabus_block(progress):
     return "\n".join(lines)
 
 
+# ---------- daily tracker calendar grid ----------
+
+def is_perfect_day(entry, categories):
+    scheduled = [c for c in categories if c in entry]
+    if not scheduled:
+        return False
+    return not any(entry.get(c) is False for c in scheduled)
+
+
+def day_cell(d, data, today):
+    start = datetime.date.fromisoformat(data["start_date"])
+    end = datetime.date.fromisoformat(data["end_date"])
+    if d < start or d > end:
+        return ""
+    if d > today:
+        return "⬛"
+    entry = data["days"].get(d.isoformat())
+    if entry and is_perfect_day(entry, data["categories"]):
+        return "🟩"
+    return "🟥"
+
+
+def compute_calendar_weeks(data):
+    start = datetime.date.fromisoformat(data["start_date"])
+    end = datetime.date.fromisoformat(data["end_date"])
+    first_monday = start - datetime.timedelta(days=start.weekday())
+    last_sunday = end + datetime.timedelta(days=6 - end.weekday())
+
+    weeks = []
+    current = first_monday
+    while current <= last_sunday:
+        weeks.append([current + datetime.timedelta(days=i) for i in range(7)])
+        current += datetime.timedelta(days=7)
+    return weeks
+
+
+def render_tracker_block(data):
+    today = datetime.date.today()
+    weeks = compute_calendar_weeks(data)
+
+    lines = [
+        "🟩 Perfect day &nbsp;&nbsp; 🟥 Missed/partial day &nbsp;&nbsp; ⬛ Not yet reached",
+        "",
+        "| Week | " + " | ".join(WEEKDAY_HEADERS) + " |",
+        "|---|" + "---|" * len(WEEKDAY_HEADERS),
+    ]
+    for week in weeks:
+        week_start = week[0]
+        label = f"{week_start.strftime('%b')} {week_start.day}"
+        cells = [day_cell(d, data, today) for d in week]
+        lines.append("| " + label + " | " + " | ".join(cells) + " |")
+    return "\n".join(lines)
+
+
 # ---------- README writing ----------
 
 def replace_block(text, start_mark, end_mark, new_content):
     if start_mark not in text or end_mark not in text:
-        raise RuntimeError(f"README markers not found: {start_mark} / {end_mark}")
+        return text
     before = text.split(start_mark)[0]
     after = text.split(end_mark)[1]
     return before + start_mark + "\n" + new_content + "\n" + end_mark + after
@@ -235,15 +292,20 @@ def main():
     write_syllabus_badges(progress)
     syllabus_block = render_syllabus_block(progress)
 
+    tracker_block = render_tracker_block(data)
+
     text = README_PATH.read_text()
     text = replace_block(text, STATS_START, STATS_END, stats_block)
     text = replace_block(text, SYL_START, SYL_END, syllabus_block)
+    text = replace_block(text, TRACKER_START, TRACKER_END, tracker_block)
     README_PATH.write_text(text)
 
     print("README and badges updated.\n")
     print(stats_block)
     print()
     print(syllabus_block)
+    print()
+    print(tracker_block)
 
 
 if __name__ == "__main__":
