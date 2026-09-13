@@ -24,19 +24,49 @@ BADGE_DIR = ROOT / "data" / "badges"
 STATS_START, STATS_END = "<!-- STATS:START -->", "<!-- STATS:END -->"
 SYL_START, SYL_END = "<!-- SYLLABUS:START -->", "<!-- SYLLABUS:END -->"
 TRACKER_START, TRACKER_END = "<!-- TRACKER:START -->", "<!-- TRACKER:END -->"
+MANTRA_START, MANTRA_END = "<!-- MANTRA:START -->", "<!-- MANTRA:END -->"
+ARC_START, ARC_END = "<!-- ARC:START -->", "<!-- ARC:END -->"
+PROGRESS_START, PROGRESS_END = "<!-- PROGRESS:START -->", "<!-- PROGRESS:END -->"
 
 WEEKDAY_HEADERS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 # Update this if the repo is ever renamed or moved to a different branch.
 RAW_BASE = "https://raw.githubusercontent.com/Sohamnaik/Winter-Arc-2026/main/data/badges"
 
-CATEGORY_LABELS = {
-    "wake_before_8": "Wake before 8 AM",
-    "exam_prep": "Exam Prep (NET-JRF / GATE / math)",
-    "programming": "Programming / Open Source",
-    "fitness_diet": "Fitness & Clean Diet",
-    "relationships": "Relationships & Connection",
-}
+# Single source of truth for the five pillars: tracker.json category key,
+# display name, and the description shown in "The Arc" table.
+PILLARS = [
+    {
+        "key": "fitness_diet",
+        "name": "The Hybrid Athlete",
+        "description": "Fitness & clean diet — train regularly, no junk, no added sugar",
+    },
+    {
+        "key": "wake_before_8",
+        "name": "The Unglamorous Climb",
+        "description": "Wake before 8 AM, no exceptions — and fixing my mental health",
+    },
+    {
+        "key": "exam_prep",
+        "name": "AIR 1",
+        "description": (
+            "CSIR-UGC-DBT-NET-JRF Life Sciences (Dec 2026) + "
+            "GATE 2027 Biotechnology & Life Sciences (Feb 2027)"
+        ),
+    },
+    {
+        "key": "programming",
+        "name": "Programming Nerd",
+        "description": "Deliberate programming practice + mathematics, from the ground up",
+    },
+    {
+        "key": "relationships",
+        "name": "Atmanirbhar Soham",
+        "description": "Relationships, self-reliance, and building real accountability",
+    },
+]
+
+CATEGORY_LABELS = {p["key"]: p["name"] for p in PILLARS}
 
 CHECKBOX_RE = re.compile(r"^\s*-\s\[( |x|X)\]", re.MULTILINE)
 
@@ -272,6 +302,35 @@ def render_tracker_block(data):
     return "\n".join(lines)
 
 
+# ---------- mantra / arc / progress ----------
+
+def render_mantra_block(data):
+    return f"> **Current mantra:** {data['quote']}"
+
+
+def render_arc_block():
+    lines = ["| # | Pillar | What it means |", "|---|---|---|"]
+    for i, p in enumerate(PILLARS, 1):
+        lines.append(f"| {i} | **{p['name']}** | {p['description']} |")
+    return "\n".join(lines)
+
+
+BAR_LENGTH = 20
+
+
+def render_progress_block(stats):
+    entries = []
+    for p in PILLARS:
+        done = stats["per_cat_done"][p["key"]]
+        missed = stats["per_cat_missed"][p["key"]]
+        total = done + missed
+        pct = round(100 * done / total) if total else 0
+        filled = round(BAR_LENGTH * pct / 100)
+        bar = "▓" * filled + "░" * (BAR_LENGTH - filled)
+        entries.append(f"**{p['name']}**\n`{bar}` {pct}%")
+    return "\n\n".join(entries)
+
+
 # ---------- README writing ----------
 
 def replace_block(text, start_mark, end_mark, new_content):
@@ -293,11 +352,17 @@ def main():
     syllabus_block = render_syllabus_block(progress)
 
     tracker_block = render_tracker_block(data)
+    mantra_block = render_mantra_block(data)
+    arc_block = render_arc_block()
+    progress_block = render_progress_block(stats)
 
     text = README_PATH.read_text()
     text = replace_block(text, STATS_START, STATS_END, stats_block)
     text = replace_block(text, SYL_START, SYL_END, syllabus_block)
     text = replace_block(text, TRACKER_START, TRACKER_END, tracker_block)
+    text = replace_block(text, MANTRA_START, MANTRA_END, mantra_block)
+    text = replace_block(text, ARC_START, ARC_END, arc_block)
+    text = replace_block(text, PROGRESS_START, PROGRESS_END, progress_block)
     README_PATH.write_text(text)
 
     print("README and badges updated.\n")
@@ -306,6 +371,12 @@ def main():
     print(syllabus_block)
     print()
     print(tracker_block)
+    print()
+    print(mantra_block)
+    print()
+    print(arc_block)
+    print()
+    print(progress_block)
 
 
 if __name__ == "__main__":
