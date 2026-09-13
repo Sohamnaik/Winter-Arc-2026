@@ -24,9 +24,7 @@ BADGE_DIR = ROOT / "data" / "badges"
 STATS_START, STATS_END = "<!-- STATS:START -->", "<!-- STATS:END -->"
 SYL_START, SYL_END = "<!-- SYLLABUS:START -->", "<!-- SYLLABUS:END -->"
 TRACKER_START, TRACKER_END = "<!-- TRACKER:START -->", "<!-- TRACKER:END -->"
-MANTRA_START, MANTRA_END = "<!-- MANTRA:START -->", "<!-- MANTRA:END -->"
 ARC_START, ARC_END = "<!-- ARC:START -->", "<!-- ARC:END -->"
-PROGRESS_START, PROGRESS_END = "<!-- PROGRESS:START -->", "<!-- PROGRESS:END -->"
 
 WEEKDAY_HEADERS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
@@ -302,11 +300,7 @@ def render_tracker_block(data):
     return "\n".join(lines)
 
 
-# ---------- mantra / arc / progress ----------
-
-def render_mantra_block(data):
-    return f"> **Current mantra:** {data['quote']}"
-
+# ---------- arc / progress ----------
 
 def render_arc_block():
     lines = ["| # | Pillar | What it means |", "|---|---|---|"]
@@ -331,6 +325,30 @@ def render_progress_block(stats):
     return "\n\n".join(entries)
 
 
+def render_tracker_section(data, stats):
+    grid_md = render_tracker_block(data)
+    progress_md = render_progress_block(stats)
+    lines = [
+        "<table>",
+        "<tr>",
+        "<td valign=\"top\">",
+        "",
+        grid_md,
+        "",
+        "</td>",
+        "<td valign=\"top\" width=\"280\">",
+        "",
+        "### Progress",
+        "",
+        progress_md,
+        "",
+        "</td>",
+        "</tr>",
+        "</table>",
+    ]
+    return "\n".join(lines)
+
+
 # ---------- README writing ----------
 
 def replace_block(text, start_mark, end_mark, new_content):
@@ -351,18 +369,14 @@ def main():
     write_syllabus_badges(progress)
     syllabus_block = render_syllabus_block(progress)
 
-    tracker_block = render_tracker_block(data)
-    mantra_block = render_mantra_block(data)
+    tracker_section = render_tracker_section(data, stats)
     arc_block = render_arc_block()
-    progress_block = render_progress_block(stats)
 
     text = README_PATH.read_text()
     text = replace_block(text, STATS_START, STATS_END, stats_block)
     text = replace_block(text, SYL_START, SYL_END, syllabus_block)
-    text = replace_block(text, TRACKER_START, TRACKER_END, tracker_block)
-    text = replace_block(text, MANTRA_START, MANTRA_END, mantra_block)
+    text = replace_block(text, TRACKER_START, TRACKER_END, tracker_section)
     text = replace_block(text, ARC_START, ARC_END, arc_block)
-    text = replace_block(text, PROGRESS_START, PROGRESS_END, progress_block)
     README_PATH.write_text(text)
 
     print("README and badges updated.\n")
@@ -370,13 +384,9 @@ def main():
     print()
     print(syllabus_block)
     print()
-    print(tracker_block)
-    print()
-    print(mantra_block)
+    print(tracker_section)
     print()
     print(arc_block)
-    print()
-    print(progress_block)
 
 
 if __name__ == "__main__":

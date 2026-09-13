@@ -15,10 +15,6 @@
 </tr>
 </table>
 
-<!-- MANTRA:START -->
-> **Current mantra:** I refuse to be bitter; don't be bitter towards life.
-<!-- MANTRA:END -->
-
 ## The Arc
 
 <!-- ARC:START -->
@@ -31,13 +27,13 @@
 | 5 | **Atmanirbhar Soham** | Relationships, self-reliance, and building real accountability |
 <!-- ARC:END -->
 
-## Player Status
-
-**Score** `-1` · **Streak** `0` 🔥 · **Perfect days** `0` · **Days logged** `1/122`
-
 ## Daily Tracker
 
 <!-- TRACKER:START -->
+<table>
+<tr>
+<td valign="top">
+
 🟩 Perfect day &nbsp;&nbsp; 🟥 Missed/partial day &nbsp;&nbsp; ⬛ Not yet reached
 
 | Week | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
@@ -60,11 +56,12 @@
 | Dec 14 | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | Dec 21 | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ | ⬛ |
 | Dec 28 | ⬛ | ⬛ | ⬛ | ⬛ |  |  |  |
-<!-- TRACKER:END -->
 
-## Progress
+</td>
+<td valign="top" width="280">
 
-<!-- PROGRESS:START -->
+### Progress
+
 **The Hybrid Athlete**
 `░░░░░░░░░░░░░░░░░░░░` 0%
 
@@ -79,4 +76,8 @@
 
 **Atmanirbhar Soham**
 `░░░░░░░░░░░░░░░░░░░░` 0%
-<!-- PROGRESS:END -->
+
+</td>
+</tr>
+</table>
+<!-- TRACKER:END -->
